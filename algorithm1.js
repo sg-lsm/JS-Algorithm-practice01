@@ -204,29 +204,54 @@ function bubbleSort(arr) {
 
 // do-while(for루프) 이므로 Big-O => O(n^2);
 
-let arr = [4, -1, 17, -20, 20, -7];
+// let arr = [4, -1, 17, -20, 20, -7];
 
-bubbleSort(arr);
+// bubbleSort(arr);
 
-console.log(arr);
+// console.log(arr);
 
 // 11-2 Insertion sort
 // 정의에 따라 하나의 항목이 항상 정렬되기 때문에 배열을 정리된 부분과 정리되지 않은 부분을 가상으로 나누어 분할한다.
 // 첫번째 요소가 이미 정렬되었다고 가정하고 나머지 요소는 정리되지 않았다고 가정한다.
 // 정리되지 않은 요소를 정리된 요소들 모두와 비교한다.
 
-function insertionSort(array) {
-  for (let i = 1; i < array.length - 1; i++) {
-    let numberSort = array[i];
-    let previousNum = i - 1;
-    while (previousNum >= 0 && array[previousNum] > numberSort) {
-      array[previousNum + 1] = array[previousNum];
-      previousNum = previousNum - 1;
-    }
-    array[previousNum + 1] = numberSort;
+// function insertionSort(array) {
+//   for (let i = 1; i < array.length - 1; i++) {
+//     let numberSort = array[i];
+//     let previousNum = i - 1;
+//     while (previousNum >= 0 && array[previousNum] > numberSort) {
+//       array[previousNum + 1] = array[previousNum];
+//       previousNum = previousNum - 1;
+//     }
+//     array[previousNum + 1] = numberSort;
+//   }
+// }
+
+// let array = [4, -1, 17, -20, 20, -7];
+// insertionSort(array);
+// console.log(array);
+
+// 11-3 Quick sort
+
+function quickSort(arr) {
+  let pivot = arr[arr.length - 1];
+  let leftElement = [];
+  let rightElement = [];
+
+  if (arr.length < 2) {
+    return arr;
   }
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      leftElement.push(arr[i]);
+    } else {
+      rightElement.push(arr[i]);
+    }
+  }
+  return [...quickSort(leftElement), pivot, ...quickSort(rightElement)];
 }
 
-let array = [4, -1, 17, -20, 20, -7];
-insertionSort(array);
-console.log(array);
+let arr = [8, 20, -4, 6, -2];
+
+console.log(quickSort(arr));
