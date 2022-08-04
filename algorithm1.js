@@ -350,3 +350,6 @@ function towerOfHanoi(n, fromRod, toRod, usingRod) {
 }
 
 towerOfHanoi(3, "A", "C", "B");
+
+// n^2 - 1
+// Big-O = O(2^n)
