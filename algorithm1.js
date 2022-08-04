@@ -295,7 +295,44 @@ function cartesian(arr1, arr2) {
   return result;
 }
 
+// for문이 중첩되어 돌아가고 있으나 두 배열의 길이가 같을 수도, 다를 수도 있으니 배열의 길이에 따라 시간복잡도는 달라진다.
+// 만약 두개의 요소의 길이가 같다면 시간 복잡도는 O(n^2)일 것이다.
+// Big-O - O(mn)
+
 const arr1 = [1, 2];
 const arr2 = [3, 4, 5];
 
 console.log(cartesian(arr1, arr2));
+
+// 13. climbing staircase problem
+
+function staircase(n) {
+  let numOfWay = [1, 2];
+  for (let i = 2; i < n; i++) {
+    numOfWay[i] = numOfWay[i - 1] + numOfWay[i - 2];
+  }
+
+  // 인덱스가 0부터 시작하니 numOfWay와 수일치를 위해 반환값에 -1을 해줘야 한다.
+  return numOfWay[n - 1];
+}
+
+// console.log(staircase(1));
+// console.log(staircase(2));
+// console.log(staircase(3));
+// console.log(staircase(4));
+// console.log(staircase(5));
+
+// 13-1. recursiveStaircase
+
+function recursiveStaircase(n) {
+  if (n === 1 || n === 2) {
+    return n;
+  }
+  return recursiveStaircase(n - 1) + recursiveStaircase(n - 2);
+}
+
+// console.log(recursiveStaircase(1));
+// console.log(recursiveStaircase(2));
+// console.log(recursiveStaircase(3));
+// console.log(recursiveStaircase(4));
+// console.log(recursiveStaircase(5));
